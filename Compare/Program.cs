@@ -1,0 +1,46 @@
+﻿using System;
+
+namespace Test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Hund[] hunde = new Hund[5];
+            hunde[0] = new Hund() { Alder = 10, Navn = "Bulder" };
+            hunde[1] = new Hund() { Alder = 5, Navn = "Lady" };
+            hunde[2] = new Hund() { Alder = 2, Navn = "Olsen" };
+            hunde[3] = new Hund() { Alder = 11, Navn = "Asta" };
+            hunde[4] = new Hund() { Alder = 4, Navn = "Karla" };
+            Array.Sort(hunde);
+            foreach (var item in hunde)
+            {
+                Console.WriteLine(item.Navn);
+            }
+
+
+            Console.ReadKey();
+
+        }
+    }
+
+    class Hund : IComparable<Hund>
+    {
+
+        public string Navn { get; set; }
+        public int Alder { get; set; }
+
+        public int CompareTo(Hund h)
+        {
+            if (h.Alder > this.Alder)
+                return -1;
+            if (h.Alder < this.Alder)
+                return 1;
+            return 0;
+        }
+
+
+
+
+    }
+}
